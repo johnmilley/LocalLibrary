@@ -11,15 +11,17 @@ const Author = require('./models/author')
 const Genre = require('./models/genre')
 const BookInstance = require('./models/bookinstance')
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false); // Prepare for Mongoose 7
 
-const mongoDB = userArgs[0];
 
 main().catch(err => console.log(err));
 async function main() {
-  await mongoose.connect(mongoDB);
+  await mongoose.connect(process.env.MONGO_URI);
 }
 
 const authors = []

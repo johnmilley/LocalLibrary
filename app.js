@@ -16,7 +16,7 @@ const app = express();
 const mongoose = require("mongoose");
 mongoose.set('strictQuery', false);
 const mongoDB = `${process.env.MONGO_URI}`;
-console.log(mongoDB)
+// console.log(mongoDB)
 
 main().catch(err => console.log(err));
 async function main() {
@@ -25,7 +25,7 @@ async function main() {
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
