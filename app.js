@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -13,7 +15,8 @@ const app = express();
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set('strictQuery', false);
-const mongoDB = "mongodb+srv://john:thisisapassword@myatlasclusteredu.dww5zpx.mongodb.net/?retryWrites=true&w=majority";
+const mongoDB = `${process.env.MONGO_URI}`;
+console.log(mongoDB)
 
 main().catch(err => console.log(err));
 async function main() {
